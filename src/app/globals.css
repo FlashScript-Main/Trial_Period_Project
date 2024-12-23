@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .main-scrollbar::-webkit-scrollbar {
+        @apply hidden;
+    }
+}
+
+.main-selection {
+    @apply selection:text-rose-600 selection:bg-yellow-400 dark:selection:text-blue-800 dark:selection:bg-sky-400;
+}
