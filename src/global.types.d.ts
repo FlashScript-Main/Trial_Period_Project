@@ -8,3 +8,13 @@ type CategoryType = {
     descFa: string;
     url: string;
 }
+
+type CategoryPageProps = {
+    params: {
+        name: string;
+    }
+}
+
+type CategoryDetailProps = {
+    category: CategoryType;
+}

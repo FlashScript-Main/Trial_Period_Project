@@ -14,7 +14,7 @@ const Footer = () => {
                         This Website was made by 
                     </span>
                     <a 
-                        href="https://github.com/FlashScript-Main/FlashScript_Trial_Period_Main"
+                        href="https://github.com/FlashScript-Main/Trial_Period_Project"
                         target="_blank"
                         className={` | text-black hover:text-yellow-400 dark:hover:text-blue-800 |  | transition-colors`}
                     >
@@ -27,11 +27,11 @@ const Footer = () => {
                         این وبسایت توسط 
                     </span>
                     <a 
-                        href="https://github.com/FlashScript-Main/FlashScript_Trial_Period_Main"
+                        href="https://github.com/FlashScript-Main/Trial_Period_Project"
                         target="_blank"
                         className={` | text-black hover:text-yellow-400 dark:hover:text-blue-800 |  | transition-colors`}
                     >
-                        فلش اسکریبپ
+                        فلش اسکریپت
                     </a>
                     <span className={`hidden md:block |  |  | `}>
                         ساخته شده است

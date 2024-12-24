@@ -20,7 +20,7 @@ export default function RootLayout({
             suppressHydrationWarning
             className={` |  |  | scroll-smooth overflow-x-hidden`}
         >
-            <body className={`relative main-selection | ${iranSans} |  | main-scrollbar`}>
+            <body className={`relative main-selection | ${iranSans} |  | no-scrollbar`}>
                 <ThemeProvider defaultTheme="dark" storageKey="next-theme">
                     {children}
                 </ThemeProvider>
