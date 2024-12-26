@@ -18,7 +18,7 @@ const CategoryPage = ({ params: { name } }: CategoryPageProps) => {
         )
     } else {
         return (
-            <main className={`mt-12 md:mt-24 |  |  | `}>
+            <main className={` | bg-body-bg-light dark:bg-body-bg-dark |  | `}>
                 <NotFoundCategory />
             </main>
         )

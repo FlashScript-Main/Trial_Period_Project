@@ -1,4 +1,8 @@
+import TanstackProvider from "@/providers/TanstackProvider";
+import { iranSans } from "@/utils/fonts";
 import type { Metadata } from "next";
+import { ThemeProvider } from "@/providers/theme-provider";
+import "../../app/globals.css";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -12,9 +16,17 @@ export default function RootLayout({
 }>) {
 
     return (
-        <html lang="en" suppressHydrationWarning>
-            <body>
-                {children}
+        <html 
+            lang="en" 
+            suppressHydrationWarning 
+            className={` |  |  | scroll-smooth overflow-x-hidden`}
+        >
+            <body className={`relative main-selection | bg-body-bg-light dark:bg-body-bg-dark ${iranSans} |  | `}>
+                <ThemeProvider defaultTheme="dark" storageKey="next-theme">
+                    <TanstackProvider>
+                        {children}
+                    </TanstackProvider>
+                </ThemeProvider>
             </body>
         </html>
     );

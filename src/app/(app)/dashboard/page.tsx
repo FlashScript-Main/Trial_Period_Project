@@ -1,8 +1,12 @@
+import BlogTable from "@/template/dashboard-page/BlogTable";
 
-const DashboardPage = () => {
+const DashboardPage = async () => {
 
     return (
-        <div>DashboardPage</div>
+        <main className={`min-h-screen | bg-body-bg-light dark:bg-body-bg-dark | flex flex-col justify-center items-center | `}>
+            <BlogTable />
+            {/* <div className="min-h-screen"></div> */}
+        </main>
     )
 
 }
