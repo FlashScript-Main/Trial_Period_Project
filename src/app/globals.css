@@ -16,3 +16,11 @@ html {
 .main-selection {
     @apply selection:text-rose-600 selection:bg-yellow-400 dark:selection:text-blue-800 dark:selection:bg-sky-400;
 }
+
+.signup-input {
+    @apply input input-bordered flex items-center gap-2;
+}
+
+.signup-input-placeholder {
+    @apply placeholder:text-lg placeholder:text-slate-500;
+}
