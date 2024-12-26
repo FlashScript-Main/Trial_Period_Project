@@ -172,7 +172,7 @@ export const randomCategory = [
     },
     {
         id: 14,
-        img: "/category/detail/1.jpeg",
+        img: "/category/detail/14.jpeg",
         "english": "Echoes of Silence",
         "persian": "پژواک سکوت"
     },
@@ -267,3 +267,13 @@ export const randomCategory = [
         "persian": "رویاهای فردا"
     }
 ]
+
+// education: <GraduationCap />
+// entertainment: <TvMinimalPlay />
+// fashion: <Drama />
+// food: <Pizza />
+// game: <Gamepad2 />
+// health: <Cross />
+// sports: <Trophy />
+// technology: <Cpu />
+// travel: <Plane />
