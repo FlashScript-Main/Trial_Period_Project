@@ -20,7 +20,7 @@ const ShareMe = () => {
                 tabIndex={0} 
                 className={`dropdown-content menu w-fit p-4 mt-2 z-[1] cursor-not-allowed | bg-white |  | rounded-box shadow-2xl border-2 border-cyan-500`}
             >
-                <QRCodeGenerator value={"https://trial-period-project.vercel.app/"} />
+                <QRCodeGenerator value={"https://flashscript--trial-period-project.vercel.app/"} />
             </ul>
         </div>
     )
