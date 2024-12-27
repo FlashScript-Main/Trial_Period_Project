@@ -31,3 +31,15 @@ export const createAccountSchemaFa = z
         path: ["confirmPassword"],
     });
 export type CreateAccountInputFa = z.infer<typeof createAccountSchemaFa>;
+
+// export const editPostSchemaEn = z
+
+/*
+import { z } from 'zod';
+
+const SelectSchema = z.object({
+  selectedOption: z.enum(['Han Solo', 'Greedo']).optional(),
+});
+
+type SelectType = z.infer<typeof SelectSchema>;
+*/
