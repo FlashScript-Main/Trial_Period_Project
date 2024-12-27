@@ -8,6 +8,9 @@ import { iranSans } from "@/utils/fonts";
 import { UserCog, UserPen } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import InstallPWA from "@/pwa/InstallPWA";
+import ShareMe from "./ShareMe";
 
 const Header = () => {
 
@@ -20,31 +23,42 @@ const Header = () => {
             style={{ direction: isEnglish ? "ltr" : "rtl" }}
         >
             <nav className={`w-full md:w-11/12 xl:w-[70rem] md:mx-auto |  | flex justify-between items-center | `}>
-                <Link 
-                    href={"/"}
-                    className={` |  | flex justify-center items-center gap-2 | group transition-all`}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.25, ease: "easeInOut" }}
                 >
-                    <Image 
-                        src="/flashscript-logo.jpeg" 
-                        alt="FlashScript Logo" 
-                        width={100} 
-                        height={100} 
-                        className={`w-12 h-12 md:w-14 md:h-14 |  |  | rounded-full border border-slate-300 dark:border-slate-700 group-hover:border-slate-700 dark:group-hover:border-slate-300 transition-colors`}
-                    />
-                    <span className={`hidden md:block md:my-auto | text-2xl font-semibold text-black dark:text-white group-hover:text-slate-700 dark:group-hover:text-slate-300 |  | `}>
-                        {isEnglish ? "FlashScript Trial Project" : "پروژه آزمایشی فلش اسکریپت"}
-                    </span>
-                </Link>
+                    <Link 
+                        href={"/"}
+                        className={` |  | flex justify-center items-center gap-2 | group transition-all`}
+                    >
+                        <Image 
+                            src="/flashscript-logo.jpeg" 
+                            alt="FlashScript Logo" 
+                            width={100} 
+                            height={100} 
+                            className={`w-12 h-12 md:w-14 md:h-14 |  |  | rounded-full border border-slate-300 dark:border-slate-700 group-hover:border-slate-700 dark:group-hover:border-slate-300 transition-colors`}
+                        />
+                        <span className={`hidden md:block md:my-auto | text-2xl font-semibold text-black dark:text-white group-hover:text-slate-700 dark:group-hover:text-slate-300 |  | `}>
+                            {isEnglish ? "FlashScript Trial Project" : "پروژه آزمایشی فلش اسکریپت"}
+                        </span>
+                    </Link>
+                </motion.div>
 
-                <div className={` | flex justify-center items-center gap-4 lg:gap-8 |  | `}>
-                    <div className={` | flex justify-center items-center gap-2 md:gap-4 |  | border-2 border-indigo-500`}>
+                <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    className={` | flex justify-center items-center gap-4 lg:gap-8 |  | `}
+                >
+                    <div className={` | flex justify-center items-center gap-2 md:gap-4 |  | `}>
                         <ModeToggle />
 
                         <LanguageToggle />
 
-                        <div>
-                            PWA
-                        </div>
+                        <ShareMe />
+
+                        <InstallPWA />
                     </div>
 
                     {
@@ -70,7 +84,7 @@ const Header = () => {
                             </Link>
                         )
                     }
-                </div>
+                </motion.div>
             </nav>
         </header>
     )

@@ -1,6 +1,11 @@
 "use client";
 
-import { CreateAccountInputEn, CreateAccountInputFa, createAccountSchemaEn, createAccountSchemaFa } from "@/lib/schema";
+import { 
+    CreateAccountInputEn, 
+    CreateAccountInputFa, 
+    createAccountSchemaEn, 
+    createAccountSchemaFa 
+} from "@/lib/schema";
 import useUserStore from "@/store/useUserStore";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from 'react-hook-form';
@@ -134,20 +139,32 @@ const SignUpForm = () => {
 
     return (
         <>
-            <h1 className={`mt-10 mb-6 | text-slate-800 dark:text-slate-200 text-4xl lg:text-5xl font-semibold text-center |  | `}>
+            <motion.h1 
+                initial={{ x: isEnglish ? "-20%" : "20%", opacity: 0 }}
+                whileInView={{ x: "0%", opacity: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: 0.5, duration: 0.25, ease: "easeInOut" }}
+                className={`mt-10 mb-6 | text-slate-800 dark:text-slate-200 text-4xl lg:text-5xl font-semibold text-center |  | `}
+            >
                 {isEnglish ? "Sign Up" : "ثبت نام"}
-            </h1>
+            </motion.h1>
 
             <motion.form 
                 onSubmit={handleSubmit(onSubmit)} 
-                initial={{ y: "20%", opacity: 0 }}
-                whileInView={{ y: "0%", opacity: 1 }}
-                viewport={{ once: true, }}
-                transition={{ delay: 0.5, duration: 0.75, ease: "easeInOut" }}
+                // initial={{ y: "20%", opacity: 0 }}
+                // whileInView={{ y: "0%", opacity: 1 }}
+                // viewport={{ once: true, }}
+                // transition={{ delay: 0.5, duration: 0.75, ease: "easeInOut" }}
                 style={{ direction: isEnglish ? "ltr" : "rtl" }}
                 className={`w-[16rem] md:w-[20rem] |  | flex flex-col gap-y-[0.9375rem] | `}
             >   
-                <label className={`signup-input ${isEnglish ? "font-serif" : iranSans} ${errors.username && "input-error"}`}>
+                <motion.label 
+                    initial={{ y: "20%", opacity: 0 }}
+                    whileInView={{ y: "0%", opacity: 1 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ delay: 0.25, duration: 0.25, ease: "easeInOut" }}
+                    className={`signup-input ${isEnglish ? "font-serif" : iranSans} ${errors.username && "input-error"}`}
+                >
                     <UserRound className="text-slate-500" />
                     <input 
                         {...register("username")}
@@ -155,14 +172,20 @@ const SignUpForm = () => {
                         className="signup-input-placeholder"
                         placeholder={`${isEnglish ? "Username" : "نام کاربری"}`}
                     />
-                </label>
+                </motion.label>
                 {errors.username && (
                     <p className={`-mt-[0.6rem] | text-rose-600 text-sm lg:text-base font-semibold |  | ${isEnglish ? "ml-2" : "ml-auto mr-2"}`}>
                         {`${errors.username.message}`}
                     </p>
                 )}
 
-                <label className={`signup-input ${isEnglish ? "font-serif" : iranSans} ${errors.email && "input-error"}`}>
+                <motion.label 
+                    initial={{ y: "20%", opacity: 0 }}
+                    whileInView={{ y: "0%", opacity: 1 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ delay: 0.5, duration: 0.25, ease: "easeInOut" }}
+                    className={`signup-input ${isEnglish ? "font-serif" : iranSans} ${errors.email && "input-error"}`}
+                >
                     <Mail className="text-slate-500" />
 
                     <input 
@@ -171,7 +194,7 @@ const SignUpForm = () => {
                         placeholder={`${isEnglish ? "Email" : "ایمیل"}`}
                         className="signup-input-placeholder" 
                     />
-                </label>
+                </motion.label>
                 {errors.email && (
                     <p className={`-mt-[0.6rem] | text-rose-600 text-sm xl:text-base font-semibold |  | ${isEnglish ? "ml-2" : "ml-auto mr-2"}`}>
                         {`${errors.email.message}`}
@@ -179,7 +202,13 @@ const SignUpForm = () => {
                 )}
                 
                 <div className={`relative |  |  | `}>
-                    <label className={`signup-input ${iranSans} ${errors.password && "input-error"}`}>
+                    <motion.label 
+                        initial={{ y: "20%", opacity: 0 }}
+                        whileInView={{ y: "0%", opacity: 1 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ delay: 0.75, duration: 0.25, ease: "easeInOut" }}
+                        className={`signup-input ${iranSans} ${errors.password && "input-error"}`}
+                    >
                         <KeyRound className="text-slate-500" />
                         <input 
                             {...register("password")}
@@ -187,13 +216,17 @@ const SignUpForm = () => {
                             placeholder={`${isEnglish ? "Password" : "رمز عبور"}`}
                             className="signup-input-placeholder"
                         />
-                    </label>
-                    <span 
+                    </motion.label>
+                    <motion.span
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ delay: 2, duration: 0.25, ease: "easeInOut" }} 
                         onClick={togglePasswordVisibility} 
                         className={`absolute ${isEnglish ? "-right-8" : "-left-8"} top-1/2 -translate-y-1/2 cursor-pointer text-slate-700 hover:text-black dark:text-slate-300 dark:hover:text-white transition-all`}
                     >
                         {inputVisibility.password ? <EyeOff /> : <Eye />}
-                    </span>
+                    </motion.span>
                 </div>
                 {errors.password && (
                     <p className={`-mt-[0.6rem] | text-rose-600 text-sm xl:text-base font-semibold |  | ${isEnglish ? "ml-2" : "ml-auto mr-2"}`}>
@@ -202,7 +235,13 @@ const SignUpForm = () => {
                 )}
 
                 <div className={`relative |  |  | `}>
-                    <label className={`signup-input ${iranSans} ${errors.confirmPassword && "input-error"}`}>
+                    <motion.label 
+                        initial={{ y: "20%", opacity: 0 }}
+                        whileInView={{ y: "0%", opacity: 1 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ delay: 1, duration: 0.25, ease: "easeInOut" }}
+                        className={`signup-input ${iranSans} ${errors.confirmPassword && "input-error"}`}
+                    >
                         <LockKeyhole className="text-slate-500" />
                         <input 
                             {...register("confirmPassword")}
@@ -210,13 +249,17 @@ const SignUpForm = () => {
                             placeholder={`${isEnglish ? "Confirm Password" : "تایید رمز عبور"}`}
                             className="signup-input-placeholder"
                         />
-                    </label>
-                    <span 
+                    </motion.label>
+                    <motion.span 
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ delay: 2.25, duration: 0.25, ease: "easeInOut" }}
                         onClick={toggleConfirmPasswordVisibility} 
                         className={`absolute ${isEnglish ? "-right-8" : "-left-8"} top-1/2 -translate-y-1/2 cursor-pointer text-slate-700 hover:text-black dark:text-slate-300 dark:hover:text-white transition-all`}
                     >
                         {inputVisibility.confirmPassword ? <EyeOff /> : <Eye />}
-                    </span>
+                    </motion.span>
                 </div>
                 {errors.confirmPassword && (
                     <p className={`-mt-[0.6rem] | text-rose-600 text-sm xl:text-base font-semibold |  | ${isEnglish ? "ml-2" : "ml-auto mr-2"}`}>
@@ -224,13 +267,17 @@ const SignUpForm = () => {
                     </p>
                 )}
 
-                <button
+                <motion.button
                     type="submit"
                     disabled={isSubmitting}
+                    initial={{ y: "20%", opacity: 0 }}
+                    whileInView={{ y: "0%", opacity: 1 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ delay: 1.25, duration: 0.25, ease: "easeIn" }}
                     className={`${isLoaderActive ? "py-2" : "py-4"} mt-[1rem] md:w-[16rem] md:mx-auto | bg-indigo-600 hover:bg-white text-white hover:text-indigo-600 text-[1rem] leading-[140%] font-semibold disabled:bg-gray-500 ${isEnglish && "font-sans"} |  | border-2 border-indigo-600 rounded-[20px] transition-all`}
                 >
                     {isLoaderActive ? (<span className="loading loading-dots loading-lg"></span>) : isEnglish ? "Sign Up" : "ثبت نام"}
-                </button>
+                </motion.button>
 
                 {/* <ResultModal isLoaderActive={isLoaderActive} /> */}
             </motion.form>

@@ -2,6 +2,7 @@ import { useLanguageStore } from "@/store/language-store";
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const MoreCategoryDetails = ({ categories }: { categories: RandomCategoryType[] }) => {
 
@@ -12,8 +13,12 @@ const MoreCategoryDetails = ({ categories }: { categories: RandomCategoryType[] 
         <>
             <div className={`mx-auto md:w-fit |  | grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 md:gap-x-6 | `}>
                 {categories?.slice(0, categoryCount).map((category, index) => (
-                    <a 
+                    <motion.a 
                         key={index}
+                        initial={{ x: "20%", opacity: 0 }}
+                        whileInView={{ x: "0%", opacity: 1 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ delay: 0.1 * (index + 0.05), duration: 0.25, ease: "easeInOut" }}
                         href={"https://github.com/FlashScript-Main"}
                         target="_blank"
                         className={`card w-full max-w-[23rem] shadow-xl max-md:mx-auto | bg-slate-200 hover:bg-rose-600 dark:bg-slate-900 dark:hover:bg-sky-400 |  | group transition-all border-2 border-blue-500 hover:border-yellow-400 dark:hover:border-sky-200`}
@@ -33,7 +38,7 @@ const MoreCategoryDetails = ({ categories }: { categories: RandomCategoryType[] 
                                 { isEnglish ? category.english : category.persian }
                             </h2>
                         </div>
-                    </a>
+                    </motion.a>
                 ))}
             </div>
 

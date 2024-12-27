@@ -7,6 +7,7 @@ import { Cpu, Cross, Drama, Gamepad2, GraduationCap, NotebookPen, NotepadText, P
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import DashboardTopIntro from "./DashboardTopIntro";
+import { motion } from "framer-motion";
 
 const BlogTable = () => {
 
@@ -52,7 +53,13 @@ const BlogTable = () => {
         >
             <DashboardTopIntro />
             
-            <div className={`mb-12 |  | flex max-md:flex-col justify-between items-center max-md:gap-4 | `}>
+            <motion.div 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: 1, duration: 0.25, ease: "easeIn" }}
+                className={`mb-12 |  | flex max-md:flex-col justify-between items-center max-md:gap-4 | `}
+            >
                 <h2 className={` | dark:text-slate-300 text-2xl md:text-3xl lg:text-4xl font-bold |  | `}>
                     {isEnglish ? "Blog Posts" : "پست های وبلاگ"}
                 </h2>
@@ -68,9 +75,15 @@ const BlogTable = () => {
                         {isEnglish ? "Create New Post" : "ایجاد پست جدید"}
                     </span>
                 </Link>
-            </div>
+            </motion.div>
 
-            <table className="table w-full border-2 border-black dark:border-white">
+            <motion.table 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: 1, duration: 0.25, ease: "easeIn" }}
+                className="table w-full border-2 border-black dark:border-white"
+            >
                 <thead className="bg-gray-50 dark:bg-gray-950 text-black dark:text-white border-2 border-black dark:border-white">
                     <tr className={` |  |  | border-2 border-black dark:border-white`}>
                         <th className={`max-lg:hidden | text-center  |  | border-2 border-black dark:border-white`}>#</th>
@@ -99,6 +112,7 @@ const BlogTable = () => {
                                 <div className={` |  | grid place-content-center | `}>
                                     <Link 
                                         href={`/category/${post.category}`} 
+                                        // I know it is MESS! I wanted to create a function for this but It did NOT work!
                                         className={`
                                             py-2 px-2 | inline-block text-slate-200 hover:bg-slate-200 | rounded-full border-2 transition-all
                                             ${post.color === "blue" && "bg-blue-500 border-blue-500 hover:text-blue-500"}
@@ -173,7 +187,7 @@ const BlogTable = () => {
                         </tr>
                     ))}
                 </tbody>
-            </table>
+            </motion.table>
         </section>
     )
 }
