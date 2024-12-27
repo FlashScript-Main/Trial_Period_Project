@@ -2,15 +2,17 @@
 
 import { LanguageToggle } from "@/language/langauge-toggle"
 import { useLanguageStore } from "@/store/language-store";
+import useUserStore from "@/store/useUserStore";
 import { ModeToggle } from "@/theme/mode-toggle"
 import { iranSans } from "@/utils/fonts";
-import { UserPen } from "lucide-react";
+import { UserCog, UserPen } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 const Header = () => {
 
     const { isEnglish } = useLanguageStore();
+    const { username } = useUserStore();
 
     return (
         <header 
@@ -45,15 +47,29 @@ const Header = () => {
                         </div>
                     </div>
 
-                    <Link
-                        href={"/sign-up"}
-                        className={`px-2 py-2 lg:px-4 | text-slate-700 dark:text-slate-300 hover:bg-white | flex items-center gap-2 | border-2 border-rose-600 rounded-full md:rounded-[20px] transition-all group`}
-                    >
-                        <UserPen className={` | group-hover:text-rose-600 |  | transition-all`} />
-                        <span className={`hidden lg:block | group-hover:text-rose-600 text-base lg:text-xl font-semibold |  | transition-all`}>
-                            {isEnglish ? "Sign Up" : "ثبت نام"}
-                        </span>
-                    </Link>
+                    {
+                        username === "" ? (
+                            <Link
+                                href={"/sign-up"}
+                                className={`px-2 py-2 lg:px-4 | text-slate-700 dark:text-slate-300 hover:bg-white | flex items-center gap-2 | border-2 border-rose-600 rounded-full md:rounded-[20px] transition-all group`}
+                            >
+                                <UserPen className={` | group-hover:text-rose-600 |  | transition-all`} />
+                                <span className={`hidden lg:block | group-hover:text-rose-600 text-base lg:text-xl font-semibold |  | transition-all`}>
+                                    {isEnglish ? "Sign Up" : "ثبت نام"}
+                                </span>
+                            </Link>
+                        ) : (
+                            <Link
+                                href={"/dashboard"}
+                                className={`px-2 py-2 lg:px-4 | text-slate-700 dark:text-slate-300 hover:bg-white | flex items-center gap-2 | border-2 border-rose-600 rounded-full md:rounded-[20px] transition-all group`}
+                            >
+                                <UserCog className={` | group-hover:text-rose-600 |  | transition-all`} />
+                                <span className={`hidden lg:block | group-hover:text-rose-600 text-base lg:text-xl font-semibold |  | transition-all`}>
+                                    {isEnglish ? "Dashboard" : "داشبورد"}
+                                </span>
+                            </Link>
+                        )
+                    }
                 </div>
             </nav>
         </header>
