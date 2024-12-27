@@ -26,7 +26,7 @@ const CategoryPage = ({ params: { name } }: CategoryPageProps) => {
     
     if (category) {
         return (
-            <main className={` | bg-body-bg-light dark:bg-body-bg-dark |  | `}>
+            <main className={`overflow-x-hidden | bg-body-bg-light dark:bg-body-bg-dark |  | `}>
                 <CategoryDetail 
                     category={category}
                 />
@@ -35,7 +35,7 @@ const CategoryPage = ({ params: { name } }: CategoryPageProps) => {
         )
     } else {
         return (
-            <main className={` | bg-body-bg-light dark:bg-body-bg-dark |  | `}>
+            <main className={`overflow-x-hidden | bg-body-bg-light dark:bg-body-bg-dark |  | `}>
                 <NotFoundCategory />
             </main>
         )

@@ -9,7 +9,7 @@ export const generateMetadata = async () => {
 const DashboardPage = async () => {
 
     return (
-        <main className={`min-h-screen | bg-body-bg-light dark:bg-body-bg-dark | flex flex-col justify-center items-center | `}>
+        <main className={`min-h-screen overflow-x-hidden | bg-body-bg-light dark:bg-body-bg-dark | flex flex-col justify-center items-center | `}>
             <BlogTable />
         </main>
     )

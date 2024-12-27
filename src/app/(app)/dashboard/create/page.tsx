@@ -72,7 +72,7 @@ const CreatePost = () => {
     }
 
     return (
-        <main className={` | bg-body-bg-light dark:bg-body-bg-dark | flex flex-col justify-center items-center | `}>
+        <main className={`overflow-x-hidden | bg-body-bg-light dark:bg-body-bg-dark | flex flex-col justify-center items-center | `}>
             <section 
                 style={{ direction: isEnglish ? "ltr" : "rtl" }}
                 className={`px-4 pb-16 md:pb-20 pt-24 w-full mt-12 md:mt-24 md:max-w-[83.75rem] md:mx-auto |  |  | `}

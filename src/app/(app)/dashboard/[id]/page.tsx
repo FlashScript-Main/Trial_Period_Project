@@ -197,7 +197,7 @@ const ReadPost = ({ params: { id } }: ReadPostProps) => {
     }
 
     return (
-        <main className={`md:py-20 lg:py-24 | bg-body-bg-light dark:bg-body-bg-dark | flex flex-col justify-center items-center | `}>
+        <main className={`md:py-20 lg:py-24 overflow-x-hidden | bg-body-bg-light dark:bg-body-bg-dark | flex flex-col justify-center items-center | `}>
             <section
                 style={{ direction: isEnglish ? "ltr" : "rtl" }}
                 className={`px-4 max-md:py-20 w-full mt-12 md:mt-24 md:max-w-[83.75rem] md:mx-auto |  |  | `}
