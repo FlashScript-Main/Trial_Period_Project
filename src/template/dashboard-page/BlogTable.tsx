@@ -1,23 +1,32 @@
 "use client";
 
 import { useLanguageStore } from "@/store/language-store";
-import useUserStore from "@/store/useUserStore";
 import { convertToPersianNumber } from "@/utils/utility-functions";
-import axios from "axios";
+// import axios from "axios";
 import { Cpu, Cross, Drama, Gamepad2, GraduationCap, NotebookPen, NotepadText, Pizza, Plane, Plus, Trash2, Trophy, TvMinimalPlay } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
+import DashboardTopIntro from "./DashboardTopIntro";
 
 const BlogTable = () => {
 
     const [posts, setPosts] = useState<PostType[] | null>(null);
     const { isEnglish } = useLanguageStore();
-    const { username } = useUserStore();
 
     const fetchPosts = async () => {
-        const response = await axios.get(`https://trial-period-server.vercel.app/posts`);
-        setPosts(response.data);
+        const response = await fetch(`https://trial-period-server.vercel.app/posts`, {
+            method: "GET",
+            headers: {
+                'Accept': 'application/json',
+                'content-Type': 'application/json'
+            },
+            cache: "no-cache",
+            // next: { revalidate: 5 }
+        });
+        const data = await response.json();
+        setPosts(data);
+        // const response = await axios.get(`https://trial-period-server.vercel.app/posts`);
+        // setPosts(response.data);
     }
 
     useEffect(() => {
@@ -41,22 +50,8 @@ const BlogTable = () => {
             style={{ direction: isEnglish ? "ltr" : "rtl" }}
             className={`px-4 max-md:py-20 w-full mt-12 md:mt-24 md:max-w-[83.75rem] md:mx-auto |  |  | `}
         >
-            <div className={`mb-12 |  |  | `}>
-                <h1 className={`mb-8 | text-4xl lg:text-6xl font-semibold text-blue-800 dark:text-blue-200 | flex justify-center items-center gap-2  | `}>
-                    <span>{isEnglish ? "Hi" : "سلام"}</span>
-                    <span>{username === "" ? "" : username}</span>
-                    <span>🖐🏻</span>
-                </h1>
-
-                <h5 className={`mb-2 | text-xl lg:text-2xl font-semibold dark:text-slate-400 |  | `}>
-                    {isEnglish ? "Welcome to your Personal Blog Dashboard!" : "به داشبورد وبلاگ شخصی خودت خوش آمدی!"}
-                </h5>
-
-                <p className={` | text-base lg:text-lg dark:text-slate-400 |  | `}>
-                    {isEnglish ? "You can Create a New Post or Edit an Existing one." : "تو می تونی یک پست جدید بسازی یا یک پست موجود را ویرایش کنی."}
-                </p>
-            </div>
-
+            <DashboardTopIntro />
+            
             <div className={`mb-12 |  | flex max-md:flex-col justify-between items-center max-md:gap-4 | `}>
                 <h2 className={` | dark:text-slate-300 text-2xl md:text-3xl lg:text-4xl font-bold |  | `}>
                     {isEnglish ? "Blog Posts" : "پست های وبلاگ"}
@@ -66,7 +61,9 @@ const BlogTable = () => {
                     href="/dashboard/create"
                     className={`px-3 py-2 | bg-green-500 hover:bg-white text-white hover:text-green-900 ${isEnglish && "font-sans"} | flex justify-center items-center gap-2 | rounded border-2 border-green-900 transition-all`}
                 >
-                    <span><Plus /></span>
+                    <span>
+                        <Plus size={20} />
+                    </span>
                     <span>
                         {isEnglish ? "Create New Post" : "ایجاد پست جدید"}
                     </span>
@@ -93,7 +90,8 @@ const BlogTable = () => {
                         >
                             <td className={`max-lg:hidden |  |  | border-2 border-black dark:border-white`}>
                                 <div className={` |  | grid place-content-center | `}>
-                                    {isEnglish ? post.id : convertToPersianNumber(post.id)}
+                                    {/* {isEnglish ? post.id : convertToPersianNumber(post.id)} */}
+                                    {isEnglish ? index + 1 : convertToPersianNumber(index + 1)}
                                 </div>
                             </td>
 
@@ -106,6 +104,12 @@ const BlogTable = () => {
                                             ${post.color === "blue" && "bg-blue-500 border-blue-500 hover:text-blue-500"}
                                             ${post.color === "red" && "bg-red-500 border-red-500 hover:text-red-500"}
                                             ${post.color === "green" && "bg-green-500 border-green-500 hover:text-green-500"}
+                                            ${post.color === "yellow" && "bg-yellow-500 border-yellow-500 hover:text-yellow-500"}
+                                            ${post.color === "pink" && "bg-pink-500 border-pink-500 hover:text-pink-500"}
+                                            ${post.color === "purple" && "bg-purple-500 border-purple-500 hover:text-purple-500"}
+                                            ${post.color === "orange" && "bg-orange-500 border-orange-500 hover:text-orange-500"}
+                                            ${post.color === "indigo" && "bg-indigo-500 border-indigo-500 hover:text-indigo-500"}
+                                            ${post.color === "lime" && "bg-lime-500 border-lime-500 hover:text-lime-500"}
                                         `}
                                     >
                                         {post.icon === "Plane" && <Plane />}
@@ -134,7 +138,7 @@ const BlogTable = () => {
                             </td>
 
                             <td className={`max-lg:hidden |  |  | border-2 border-black dark:border-white`}>
-                                <div className={`w-[30ch] | ${!isEnglish && "lg:text-start"} line-clamp-1 |  | `}>
+                                <div className={`w-[30ch] lg:w-[40ch] | ${!isEnglish && "lg:text-start"} line-clamp-1 |  | `}>
                                     {isEnglish ? post.contentEn : post.contentFa}
                                 </div>
                             </td>

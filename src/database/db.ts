@@ -277,3 +277,60 @@ export const randomCategory = [
 // sports: <Trophy />
 // technology: <Cpu />
 // travel: <Plane />
+
+export const categoryColors = [
+    {
+        id: 1,
+        color: "red",
+        colorNameEn: "Red",
+        colorNameFa: "قرمز",
+    },
+    {
+        id: 2,
+        color: "green",
+        colorNameEn: "Green",
+        colorNameFa: "سبز",
+    },
+    {
+        id: 3,
+        color: "blue",
+        colorNameEn: "Blue",
+        colorNameFa: "آبی",
+    },
+    {
+        id: 4,
+        color: "yellow",
+        colorNameEn: "Yellow",
+        colorNameFa: "زرد",
+    },
+    {
+        id: 5,
+        color: "pink",
+        colorNameEn: "Pink",
+        colorNameFa: "صورتی",
+    },
+    {
+        id: 6,
+        color: "purple",
+        colorNameEn: "Purple",
+        colorNameFa: "ارغوانی",
+    },
+    {
+        id: 7,
+        color: "orange",
+        colorNameEn: "Orange",
+        colorNameFa: "نارنجی",
+    },
+    {
+        id: 8,
+        color: "indigo",
+        colorNameEn: "Indigo",
+        colorNameFa: "نیلی",
+    },
+    {
+        id: 9,
+        color: "lime",
+        colorNameEn: "Lime",
+        colorNameFa: "لیمویی",
+    },
+]
